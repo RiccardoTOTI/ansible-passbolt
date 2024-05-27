@@ -88,16 +88,23 @@
   pip:
     name: docker
 
+- name: Install requests python package
+  pip:
+    name: requests==2.31.0
+
+# con la versione di reqeusts 2.32 non si completava l'installazione di passbolt (Docker)
+# https://github.com/docker/docker-py/issues/3256
+
 - name: download docker image for passbolt
-  docker_image:
+  community.general.docker_image:
     name: "passbolt/passbolt"
     tag: "{{ passbolt_version }}"
-    force: yes
+    source: pull 
 
 - name: Create passbolt docker container
   vars:
     database_server_str: "{{ groups['mariadb'] | map('extract', hostvars, ['host_ip']) | list | first }}"
-  docker_container:
+  community.general.docker_container:
     name: "passbolt_master"
     image: "passbolt/passbolt:{{ passbolt_version }}"
     recreate: true

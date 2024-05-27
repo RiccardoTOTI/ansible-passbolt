@@ -10,15 +10,22 @@ German: https://neuroforge.de/passbolt-ein-open-source-passwort-manager/
 ### Preparations
 
 ```
-sudo apt install python3
-sudo apt install python3-pip
-pip3 install ansible==2.7.10
-ansible-galaxy install geerlingguy.docker,v2.5.1 geerlingguy.mysql,v2.9.4 
+virtualenv ansible-manager 
+source ansible-manager/bin/activate
+pip3 install ansible
+ansible-galaxy install geerlingguy.docker, geerlingguy.mysql
 ```
 
 ### Step by Step
 
-1. Adapt `files/certs/passbolt_server/gen_root_cert.sh` and `files/certs/passbolt_server/gen_server_cert.sh` to generate certificates that fit your organisation. (Tip: search for `emailAddress=test@your-domain.de`)
+1. Adapt `files/certs/passbolt_server/gen_root_cert.sh` and `files/certs/passbolt_server/gen_server_cert.sh` to generate certificates that fit your organisation. (Tip: search for `emailAddress=test@your-domain.it`)
+2. run `sudo bash files/certs/passbolt_server/gen_root_cert.sh files/certs/passbolt_server/passbolt_mariadb_cert` 
+3. run `sudo bash files/certs/passbolt_server/gen_server_cert.sh files/certs/passbolt_server/passbolt_mariadb_cert/ files/certs/passbolt_server/passbolt_mariadb_cert/ www.passbolt.it` put CN of your choice
+4. run `sudo bash files/certs/passbolt_server/gen_root_cert.sh files/certs/passbolt_server/mariadb_server_cert`
+5. run `sudo bash files/certs/passbolt_server/gen_server_cert.sh files/certs/passbolt_server/mariadb_server_cert/ files/certs/passbolt_server/mariadb_server_cert/ www.passbolt.it` put CN of your choice
+6. create ssh-pub to put in the VM, run `ssh-keygen -t rsa -b 2048 -f ./ssh_keys/root_rsa`
+7. put to the VM, `ssh-copy-id -i /ssh_keys/root_rsa.pub user@ip_address`
+
 2. Adapt `files/certs/passbolt_server/recreate_server_certs.sh` and replace the placeholders accordingly
 3. Adapt `inventories/passbolt/group_vars/all/all_config.yml` according to the comments in the file.
 4. Adapt your Ansible inventory to point to the correct IP in `inventories/passbolt/hosts.yml`.

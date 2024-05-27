@@ -1,5 +1,5 @@
 server {
-    listen 443 ssl;
+    # listen 443 ssl;
     server_name  {{ passbolt_domain }};
     include includes/serversettings.conf;
 
@@ -22,6 +22,6 @@ server {
         proxy_pass_request_headers on;
     }
 
-    ssl_certificate /etc/letsencrypt/live/{{ passbolt_domain }}/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/{{ passbolt_domain }}/privkey.pem; # managed by Certbot
+    # ssl_certificate /etc/letsencrypt/live/{{ passbolt_domain }}/fullchain.pem; # managed by Certbot
+    # ssl_certificate_key /etc/letsencrypt/live/{{ passbolt_domain }}/privkey.pem; # managed by Certbot
 }

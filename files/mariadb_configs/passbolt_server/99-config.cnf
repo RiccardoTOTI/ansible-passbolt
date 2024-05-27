@@ -1,5 +1,5 @@
 [mysqld]
 ssl
-ssl-ca = /data/ansible/certs/mariadb_server_cert/rootCA.crt
-ssl-cert = /data/ansible/certs/mariadb_server_cert/server.crt
-ssl-key = /data/ansible/certs/mariadb_server_cert/server.key
+ssl_ca = /data/ansible/certs/mariadb_server_cert/mariadb_server_cert/rootCA.crt
+ssl_cert = /data/ansible/certs/mariadb_server_cert/mariadb_server_cert/server.crt
+ssl_key = /data/ansible/certs/mariadb_server_cert/mariadb_server_cert/server.key

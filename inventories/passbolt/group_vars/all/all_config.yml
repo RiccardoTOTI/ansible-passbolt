@@ -16,12 +16,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # the main domain of your infrastructure (passbolt is never hosted on the root domain with this playbook)
-infrastructure_base_domain: "neuroforge-test.duckdns.org"
+infrastructure_base_domain: "internal-test.it"
 # the actual domain to use for passbolt, only change the part before the first dot
 passbolt_domain: "vault.{{ infrastructure_base_domain }}"
 
 # which passbolt version to use, see https://hub.docker.com/r/passbolt/passbolt/tags
-passbolt_version: "3.12.0-3-ce"
+passbolt_version: "4.8.0-1-ce"
 # the password to the passbolt database
 passbolt_db_passwd: "UJ2nsUjgCgQX7PeMzeU9gCV6sbnmEScs"
 # the salt to use in passbolts CakePHP, see https://api.wordpress.org/secret-key/1.1/salt/ (and use one of the keys/salts)
@@ -30,12 +30,12 @@ passbolt_salt: "SGx.ngspO-d#WFqobx<>Dy^g9zX+aj$Yz4FMt+pbWYl}`?zBPj|DiHf$,iFTlG08
 # the name of your default user, admin should be fine
 passbolt_default_user: "admin"
 # the email of your default user
-passbolt_default_user_mail: "admin@neuroforge.de"
+passbolt_default_user_mail: "rick60000000@gmail.com"
 
 # the email for your email notifications (other settings are set up for gmail)
-passbolt_email_from: "your-email@gmail.com"
+passbolt_email_from: "rick60000000@gmail.com"
 # the email password
-passbolt_email_password: "<your-email-password>"
+passbolt_email_password: "ipodtouch96"
 
 passbolt_db: "passbolt"
 passbolt_db_user: "passbolt"
@@ -56,17 +56,17 @@ mysql_users:
   - name: "{{ passbolt_db_user }}"
     host: "127.0.0.1"
     password: "{{ passbolt_db_passwd }}"
-    priv: "{{ passbolt_db }}.*:ALL/*.*:REQUIRESSL"
+    priv: "{{ passbolt_db }}.*:ALL"
     encrypt: yes
   - name: "{{ passbolt_db_user }}"
     host: "172.17.0.0/255.255.0.0"
     password: "{{ passbolt_db_passwd }}"
-    priv: "{{ passbolt_db }}.*:ALL/*.*:REQUIRESSL"
+    priv: "{{ passbolt_db }}.*:ALL"
     encrypt: yes
   - name: "{{ passbolt_db_user }}"
     host: "172.18.0.0/255.255.0.0"
     password: "{{ passbolt_db_passwd }}"
-    priv: "{{ passbolt_db }}.*:ALL/*.*:REQUIRESSL"
+    priv: "{{ passbolt_db }}.*:ALL"
     encrypt: yes
   
 mysql_databases:

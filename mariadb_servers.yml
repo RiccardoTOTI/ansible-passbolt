@@ -19,7 +19,7 @@
   become: true
   vars:
     ansible_ssh_private_key_file: "{{playbook_dir}}/ssh_keys/root_rsa"
-    ansible_user: "root"
+    ansible_user: "rkee"
     
     apt_update_cache: True
     apt_restart_after_dist_upgrade: True
@@ -42,7 +42,7 @@
   become: true
   vars:
     ansible_ssh_private_key_file: "{{playbook_dir}}/ssh_keys/root_rsa"
-    ansible_user: "root"
+    ansible_user: "rkee"
     
     apt_update_cache: True
 
@@ -62,9 +62,9 @@
     mysql_datadir: /var/lib/mysql
 
     mysql_packages:
-      - mariadb-client-10.1
-      - mariadb-server-10.1
-      - python-mysqldb
+      - mariadb-client
+      - mariadb-server
+      - python3-mysqldb
 
     overwrite_global_mycnf: true
 

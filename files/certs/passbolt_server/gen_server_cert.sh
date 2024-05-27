@@ -43,7 +43,7 @@ echo
 # create a certificate request for our server. This includes a subject alternative name so either aios-localhost, localhost or postgres_ssl can be used to address it
 echo
 echo "${LOGGING_PREFIX} Creating server certificate"
-openssl req -new -key ${BASEDIR}/server.key -out ${BASEDIR}/server.csr -subj "/emailAddress=kontakt@neuroforge.de/C=DE/ST=State/L=City/O=Organisation/OU=Organisation-dev/CN=${COMMON_NAME}" # -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:postgres_ssl,DNS:localhost,DNS:neuroforge-localhost")) 
+openssl req -new -key ${BASEDIR}/server.key -out ${BASEDIR}/server.csr -subj "/emailAddress=test@your-domain.it/C=IT/ST=State/L=City/O=Organisation/OU=Organisation-dev/CN=${COMMON_NAME}" # -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:postgres_ssl,DNS:localhost,DNS:neuroforge-localhost")) 
 echo "${LOGGING_PREFIX} Server certificate signing request (${BASEDIR}/server.csr) is:"
 openssl req -verify -in ${BASEDIR}/server.csr -text -noout
 echo

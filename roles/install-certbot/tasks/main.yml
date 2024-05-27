@@ -23,14 +23,9 @@
         name: software-properties-common
         update_cache: "{{ apt_update_cache | default('True') }}"
 
-    - name: Add Certbot PPA
-      apt_repository:
-        repo: ppa:certbot/certbot
-        state: present
-
     - name: Install python plugin for Certbot 
       apt:
-        name: python-certbot-nginx
+        name: python3-certbot-nginx
         update_cache: "{{ apt_update_cache | default('True') }}"
         state: latest
 

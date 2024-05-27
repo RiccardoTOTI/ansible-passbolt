@@ -19,7 +19,7 @@
   become: true
   vars:
     ansible_ssh_private_key_file: "{{playbook_dir}}/ssh_keys/root_rsa"
-    ansible_user: "root"
+    ansible_user: "rkee"
     
     apt_update_cache: True
     apt_restart_after_dist_upgrade: True
@@ -36,7 +36,7 @@
   become: true
   vars:
     ansible_ssh_private_key_file: "{{playbook_dir}}/ssh_keys/root_rsa"
-    ansible_user: "root"
+    ansible_user: "rkee"
     
   roles:
     - geerlingguy.docker

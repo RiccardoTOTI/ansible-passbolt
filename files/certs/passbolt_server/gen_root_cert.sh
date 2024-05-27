@@ -41,7 +41,7 @@ echo
 # create and self sign the root CA certificate
 echo
 echo "${LOGGING_PREFIX} Creating self-signed root CA certificate"
-openssl req -x509 -new -nodes -key ${BASEDIR}/rootCA.key -sha512 -days 36500 -out ${BASEDIR}/rootCA.crt -subj "/emailAddress=test@your-domain.de/C=DE/ST=State/L=City/O=Organisation/OU=Organisation-dev/CN=Organisation-CA" -extensions v3_ca
+openssl req -x509 -new -nodes -key ${BASEDIR}/rootCA.key -sha512 -days 36500 -out ${BASEDIR}/rootCA.crt -subj "/emailAddress=test@your-domain.it/C=IT/ST=State/L=City/O=Organisation/OU=Organisation-dev/CN=Organisation-CA" -extensions v3_ca
 echo "${LOGGING_PREFIX} Self-signed root CA certificate (${BASEDIR}/rootCA.crt) is:"
 openssl x509 -in ${BASEDIR}/rootCA.crt -text -noout
 echo
